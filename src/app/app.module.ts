@@ -14,6 +14,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { LostPasswordComponent } from './user/public/lost-password/lost-password.component';
 import { ResetPasswordComponent } from './user/public/reset-password/reset-password.component';
 import { EmailVerifiedComponent } from './user/public/email-verified/email-verified.component';
+import { ProfileComponent } from './user/private/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EmailVerifiedComponent } from './user/public/email-verified/email-verif
     AccessComponent,
     LostPasswordComponent,
     ResetPasswordComponent,
-    EmailVerifiedComponent
+    EmailVerifiedComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

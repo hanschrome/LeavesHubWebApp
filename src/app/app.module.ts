@@ -13,13 +13,15 @@ import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { LostPasswordComponent } from './user/public/lost-password/lost-password.component';
 import { ResetPasswordComponent } from './user/public/reset-password/reset-password.component';
+import { EmailVerifiedComponent } from './user/public/email-verified/email-verified.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccessComponent,
     LostPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    EmailVerifiedComponent
   ],
   imports: [
     BrowserModule,

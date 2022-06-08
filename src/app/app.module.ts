@@ -20,6 +20,7 @@ import { ForestComponent } from './forest/forest.component';
 import { TreeComponent } from './forest/tree/tree.component';
 import { BranchComponent } from './forest/tree/branch/branch.component';
 import { LeafComponent } from './forest/tree/branch/leaf/leaf.component';
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -35,17 +36,18 @@ import { LeafComponent } from './forest/tree/branch/leaf/leaf.component';
     BranchComponent,
     LeafComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatToolbarModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatListModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

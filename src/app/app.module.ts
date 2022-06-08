@@ -15,6 +15,7 @@ import { LostPasswordComponent } from './user/public/lost-password/lost-password
 import { ResetPasswordComponent } from './user/public/reset-password/reset-password.component';
 import { EmailVerifiedComponent } from './user/public/email-verified/email-verified.component';
 import { ProfileComponent } from './user/private/profile/profile.component';
+import { ForestListComponent } from './forest/components/forest-list/forest-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProfileComponent } from './user/private/profile/profile.component';
     LostPasswordComponent,
     ResetPasswordComponent,
     EmailVerifiedComponent,
-    ProfileComponent
+    ProfileComponent,
+    ForestListComponent
   ],
   imports: [
     BrowserModule,

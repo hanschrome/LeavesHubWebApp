@@ -12,12 +12,14 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { LostPasswordComponent } from './user/public/lost-password/lost-password.component';
+import { ResetPasswordComponent } from './app/user/public/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccessComponent,
-    LostPasswordComponent
+    LostPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

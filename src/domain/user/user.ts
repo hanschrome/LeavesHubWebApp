@@ -1,17 +1,17 @@
 class User implements IUserId {
-  private readonly _userId: IUserId;
-  private readonly _userEmail: IUserEmail;
+  private readonly _id: IUserId;
+  private readonly _email: IUserEmail;
 
-  constructor(userId: IUserId, userEmail: IUserEmail) {
-    this._userId = userId;
-    this._userEmail = userEmail;
+  constructor(id: IUserId, email: IUserEmail) {
+    this._id = id;
+    this._email = email;
   }
 
-  get userId(): IUserId {
-    return this._userId;
+  get id(): IUserId {
+    return this._id;
   }
 
-  get userEmail(): IUserEmail {
-    return this._userEmail;
+  get email(): IUserEmail {
+    return this._email;
   }
 }

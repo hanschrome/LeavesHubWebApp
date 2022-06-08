@@ -11,11 +11,13 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { LostPasswordComponent } from './user/public/lost-password/lost-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccessComponent
+    AccessComponent,
+    LostPasswordComponent
   ],
   imports: [
     BrowserModule,

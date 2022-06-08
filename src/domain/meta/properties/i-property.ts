@@ -1,0 +1,3 @@
+interface IProperty {
+  validate(): void;
+}

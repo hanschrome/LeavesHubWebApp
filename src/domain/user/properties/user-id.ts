@@ -1,4 +1,4 @@
-class UserId {
+class UserId implements IProperty, IUserId {
   private readonly _value: string;
 
   constructor(value: string) {
@@ -10,7 +10,7 @@ class UserId {
     return this._value;
   }
 
-  validate() {
+  validate(): void{
     if (this._value.length != 36) throw new UserIdException('Incorrect length of UUID');
   }
 }

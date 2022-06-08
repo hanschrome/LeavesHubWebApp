@@ -17,6 +17,9 @@ import { EmailVerifiedComponent } from './user/public/email-verified/email-verif
 import { ProfileComponent } from './user/private/profile/profile.component';
 import { ForestListComponent } from './forest/components/forest-list/forest-list.component';
 import { ForestComponent } from './forest/forest.component';
+import { TreeComponent } from './forest/tree/tree.component';
+import { BranchComponent } from './forest/tree/branch/branch.component';
+import { LeafComponent } from './forest/tree/branch/leaf/leaf.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { ForestComponent } from './forest/forest.component';
     EmailVerifiedComponent,
     ProfileComponent,
     ForestListComponent,
-    ForestComponent
+    ForestComponent,
+    TreeComponent,
+    BranchComponent,
+    LeafComponent
   ],
   imports: [
     BrowserModule,

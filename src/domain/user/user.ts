@@ -1,4 +1,4 @@
-class User {
+class User implements IUserId {
   private readonly _userId: IUserId;
   private readonly _userEmail: IUserEmail;
 

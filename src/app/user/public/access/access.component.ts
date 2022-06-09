@@ -13,8 +13,8 @@ export class AccessComponent implements OnInit {
   registerErrorMessage: string|null = null;
 
   STATUS_CLEAN = 0;
-  STATUS_ERROR = 1;
-  STATUS_SUCCESS = 2;
+  STATUS_REGISTRATION_ERROR = 1;
+  STATUS_REGISTRATION_SUCCESS = 2;
 
   _registrationStatus = this.STATUS_CLEAN;
 
@@ -38,10 +38,10 @@ export class AccessComponent implements OnInit {
   registerEmailAction(registerEmailField: string): void {
     this.userAccess.registerUserByEmail(registerEmailField).subscribe(
       userResponse => {
-        let registrationStatus = this.STATUS_SUCCESS;
+        let registrationStatus = this.STATUS_REGISTRATION_SUCCESS;
 
         if (!userResponse.isSuccess) {
-           registrationStatus = this.STATUS_ERROR;
+           registrationStatus = this.STATUS_REGISTRATION_ERROR;
            this.registerErrorMessage = (new AccessErrorMessages()).getErrorByKey(userResponse.errorCode);
         }
 

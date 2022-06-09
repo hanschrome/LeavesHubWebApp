@@ -30,7 +30,7 @@
     <div>
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input name="email" matInput placeholder="your@email.com" type="email" required>
+        <input (click)="registerButtonClickEventHandler()" [ngModel]="registerEmailField" name="email" matInput placeholder="your@email.com" type="email" required>
       </mat-form-field>
     </div>
     <button mat-raised-button color="accent">Register</button>

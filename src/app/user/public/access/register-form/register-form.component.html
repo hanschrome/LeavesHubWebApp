@@ -1,1 +1,20 @@
-<p>register-form works!</p>
+<mat-card>
+  <h2>Register</h2>
+
+  <form (ngSubmit)="registerButtonClickEventHandler()">
+    <div>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input [formControl]="registerEmailFormControl" name="email" matInput placeholder="your@email.com" type="email" required>
+      </mat-form-field>
+    </div>
+    <div class="center">
+      <mat-spinner *ngIf="registrationStatus === this.STATUS_REGISTRATION_SENDING"></mat-spinner>
+    </div>
+    <button
+      [disabled]="true"
+      *ngIf="registrationStatus !== this.STATUS_REGISTRATION_SENDING"
+      mat-raised-button color="accent"
+    >Register</button>
+  </form>
+</mat-card>

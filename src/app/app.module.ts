@@ -25,6 +25,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {HttpUserRepository} from "../infrastructure/user/public/access/http-user-repository";
 import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import { RegisterFormComponent } from './user/public/access/register-form/register-form.component';
+import { AccessFormComponent } from './user/public/access/access-form/access-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { RegisterFormComponent } from './user/public/access/register-form/regist
     TreeComponent,
     BranchComponent,
     LeafComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    AccessFormComponent
   ],
   imports: [
     BrowserModule,

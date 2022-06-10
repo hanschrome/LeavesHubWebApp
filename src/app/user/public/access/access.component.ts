@@ -33,6 +33,7 @@ export class AccessComponent implements OnInit {
   }
 
   registerButtonClickEventHandler(): void {
+    this.registrationStatus = this.STATUS_REGISTRATION_SENDING;
     this.registerEmailAction(this.registerEmailField);
   }
 

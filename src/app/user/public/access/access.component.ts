@@ -15,6 +15,7 @@ export class AccessComponent implements OnInit {
   STATUS_CLEAN = 0;
   STATUS_REGISTRATION_ERROR = 1;
   STATUS_REGISTRATION_SUCCESS = 2;
+  STATUS_REGISTRATION_SENDING = 3;
 
   _registrationStatus = this.STATUS_CLEAN;
 

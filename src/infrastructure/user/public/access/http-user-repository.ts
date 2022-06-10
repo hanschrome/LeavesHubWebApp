@@ -6,7 +6,9 @@ import {
 } from "../../../../domain/user/contracts/user-repository/responses/i-user-creation-http-response";
 import {UserCreationHttpResponse} from "./user-creation-http-response";
 import {environment} from "../../../../environments/environment";
+import {Injectable} from "@angular/core";
 
+@Injectable()
 export class HttpUserRepository implements IUserRepository {
 
   private _url = '/v1/register'

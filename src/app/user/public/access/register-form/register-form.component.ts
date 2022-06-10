@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
+import {FormControl, Validators} from "@angular/forms";
 import {AccessErrorMessages} from "../access-error-messages";
 import {UserAccessService} from "../user-access.service";
 
@@ -20,7 +20,10 @@ export class RegisterFormComponent implements OnInit {
   _registrationStatus = this.STATUS_CLEAN;
 
   registerEmailField = '';
-  registerEmailFormControl = new FormControl('');
+  registerEmailFormControl = new FormControl('', [
+    Validators.email,
+    Validators.required,
+  ]);
 
   constructor(private userAccess: UserAccessService) {
   }

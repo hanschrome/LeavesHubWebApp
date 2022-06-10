@@ -12,7 +12,7 @@
       <mat-spinner *ngIf="registrationStatus === this.STATUS_REGISTRATION_SENDING"></mat-spinner>
     </div>
     <button
-      [disabled]="true"
+      [disabled]="!registerEmailFormControl.valid"
       *ngIf="registrationStatus !== this.STATUS_REGISTRATION_SENDING"
       mat-raised-button color="accent"
     >Register</button>

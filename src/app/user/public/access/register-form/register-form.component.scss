@@ -10,3 +10,9 @@ a {
   float: right;
   clear-after: both;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

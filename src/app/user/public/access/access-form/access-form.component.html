@@ -1,1 +1,18 @@
-<p>access-form works!</p>
+<mat-card>
+  <h2>Login</h2>
+
+  <form>
+    <div>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input name="email" matInput placeholder="your@email.com" type="email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input name="password" matInput type="password" required>
+      </mat-form-field>
+    </div>
+    <a href="/lost-password" [routerLink]="['/lost-password']">Forgot password?</a>
+    <button mat-raised-button color="accent">Login</button>
+  </form>
+</mat-card>

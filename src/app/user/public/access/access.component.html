@@ -3,30 +3,12 @@
 </mat-toolbar>
 
 <div class="form-content">
-  <mat-card>
-    <h2>Login</h2>
-
-    <form>
-      <div>
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input name="email" matInput placeholder="your@email.com" type="email" required>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input name="password" matInput type="password" required>
-        </mat-form-field>
-      </div>
-      <a href="/lost-password" [routerLink]="['/lost-password']">Forgot password?</a>
-      <button mat-raised-button color="accent">Login</button>
-    </form>
-  </mat-card>
+  <app-access-form></app-access-form>
 
   <div class="form-splitter">In case of you are not sharing leaves yet...</div>
 
   <app-register-form></app-register-form>
 </div>
-
 
 <div class="terms-and-conditions">
   <ul>

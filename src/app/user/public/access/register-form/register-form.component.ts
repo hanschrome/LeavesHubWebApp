@@ -19,7 +19,6 @@ export class RegisterFormComponent implements OnInit {
 
   _registrationStatus = this.STATUS_CLEAN;
 
-  registerEmailField = '';
   registerEmailFormControl = new FormControl('', [
     Validators.email,
     Validators.required,
@@ -41,7 +40,7 @@ export class RegisterFormComponent implements OnInit {
 
   registerButtonClickEventHandler(): void {
     this.registrationStatus = this.STATUS_REGISTRATION_SENDING;
-    this.registerEmailAction(this.registerEmailField);
+    this.registerEmailAction(this.registerEmailFormControl.value || '');
   }
 
   registerEmailAction(registerEmailField: string): void {
@@ -58,5 +57,4 @@ export class RegisterFormComponent implements OnInit {
       }
     );
   }
-
 }

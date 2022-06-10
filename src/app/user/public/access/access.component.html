@@ -26,14 +26,20 @@
 <mat-card>
   <h2>Register</h2>
 
-  <form>
+  <form (ngSubmit)="registerButtonClickEventHandler()">
     <div>
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input (click)="registerButtonClickEventHandler()" [ngModel]="registerEmailField" name="email" matInput placeholder="your@email.com" type="email" required>
+        <input [ngModel]="registerEmailField" name="email" matInput placeholder="your@email.com" type="email" required>
       </mat-form-field>
     </div>
-    <button mat-raised-button color="accent">Register</button>
+    <div class="center">
+      <mat-spinner *ngIf="registrationStatus === this.STATUS_REGISTRATION_SENDING"></mat-spinner>
+    </div>
+    <button
+      *ngIf="registrationStatus !== this.STATUS_REGISTRATION_SENDING"
+      mat-raised-button color="accent"
+    >Register</button>
   </form>
 </mat-card>
 

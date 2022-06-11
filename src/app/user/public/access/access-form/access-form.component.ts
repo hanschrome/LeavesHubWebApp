@@ -8,6 +8,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class AccessFormComponent implements OnInit {
 
+   errorMessage: string | null = null;
+
   formGroup = new FormGroup({
     email: new FormControl('', [
       Validators.email,

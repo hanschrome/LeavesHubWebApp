@@ -13,6 +13,7 @@
       </mat-form-field>
     </div>
     <a href="/lost-password" [routerLink]="['/lost-password']">Forgot password?</a>
+    <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
     <button [disabled]="!formGroup.valid" mat-raised-button color="accent">Login</button>
   </form>
 </mat-card>

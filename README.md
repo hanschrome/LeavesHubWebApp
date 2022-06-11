@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
+## Setup project
+
+### 1 - Fill configuration
+
+In src > environments you will find two files, for development and for production.
+
+The properties you should fill:
+
+* api - Endpoint of the API you are consuming. Examples: https://api.mysiteweb.com, http://localhost:8000, http://172.17.0.2  
+* reCaptchaSiteKey - Captcha code got from [Google recaptcha admin site](https://www.google.com/recaptcha/admin/create). Example: 2Ld3jl9gAAAAAHMWDQ9UDsip63s_vdLvYRMyZrkD
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

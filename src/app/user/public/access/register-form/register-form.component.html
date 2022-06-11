@@ -7,6 +7,12 @@
         <mat-label>Email</mat-label>
         <input [formControl]="registerEmailFormControl" name="email" matInput placeholder="your@email.com" type="email" required>
       </mat-form-field>
+      <div>
+        <button class="g-recaptcha"
+                [attr.data-sitekey]="this.recaptchaSiteKey"
+                data-callback='saveCaptchaInGlobalWindow'
+                data-action='submit'>Submit</button>
+      </div>
     </div>
     <div class="center">
       <mat-spinner *ngIf="registrationStatus === this.STATUS_REGISTRATION_SENDING"></mat-spinner>

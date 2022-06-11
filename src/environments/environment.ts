@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'http://172.16.0.3:3000'
+  api: 'http://172.16.0.3:3000',
+  reCaptchaSiteKey: '',
 };
 
 /*

@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {AccessErrorMessages} from "../access-error-messages";
 import {UserAccessService} from "../user-access.service";
+import {environment} from "../../../../../environments/environment";
+
+declare var window: any;
 
 @Component({
   selector: 'app-register-form',
@@ -30,6 +33,10 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get recaptchaSiteKey(): string {
+    return environment.reCaptchaSiteKey;
+  }
+
   get registrationStatus(): number {
     return this._registrationStatus;
   }
@@ -39,7 +46,14 @@ export class RegisterFormComponent implements OnInit {
   }
 
   registerButtonClickEventHandler(): void {
+    if (!window.captcha) {
+      this.registrationStatus = this.STATUS_REGISTRATION_ERROR;
+      this.registerErrorMessage = (new AccessErrorMessages()).getErrorByKey('EMPTY_CAPTCHA');
+      return;
+    }
+
     this.registrationStatus = this.STATUS_REGISTRATION_SENDING;
+    this.registerErrorMessage = null;
     this.registerEmailAction(this.registerEmailFormControl.value || '');
   }
 

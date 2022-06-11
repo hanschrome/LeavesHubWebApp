@@ -4,7 +4,9 @@ export class AccessErrorMessages {
     'UNKNOWN': 'An error happened on our backend.',
     'MAIL_MALFORMED': 'This does not seem to be a valid mail.',
     'EXISTING_MAIL': 'Your mail is already registered. Do you want to recover your password?',
-    'WRONG_PASSWORD': 'The password is wrong.'
+    'WRONG_PASSWORD': 'The password is wrong.',
+    'EMPTY_CAPTCHA': 'Please, pass the captcha.',
+    'WRONG_CAPTCHA': 'Captcha has expired, please pass it again.',
   };
 
   get errors(): any{

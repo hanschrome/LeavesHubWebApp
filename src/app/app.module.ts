@@ -26,6 +26,7 @@ import {HttpUserRepository} from "../infrastructure/user/public/access/http-user
 import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import { RegisterFormComponent } from './user/public/access/register-form/register-form.component';
 import { AccessFormComponent } from './user/public/access/access-form/access-form.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -43,21 +44,22 @@ import { AccessFormComponent } from './user/public/access/access-form/access-for
     RegisterFormComponent,
     AccessFormComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        HttpClientModule,
+        MatIconModule
+    ],
   providers: [
     HttpUserRepository,
   ],

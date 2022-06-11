@@ -5,13 +5,11 @@
     <div>
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input [formControl]="registerEmailFormControl" name="email" matInput placeholder="your@email.com" type="email" required>
+        <input [formControl]="registerEmailFormControl" name="email" matInput placeholder="your@email.com" type="email"
+               required>
       </mat-form-field>
       <div>
-        <button class="g-recaptcha"
-                [attr.data-sitekey]="this.recaptchaSiteKey"
-                data-callback='saveCaptchaInGlobalWindow'
-                data-action='submit'>Submit</button>
+        <!-- captcha -->
       </div>
     </div>
     <div class="center">

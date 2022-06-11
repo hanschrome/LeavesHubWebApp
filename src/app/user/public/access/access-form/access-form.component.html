@@ -1,18 +1,18 @@
 <mat-card>
   <h2>Login</h2>
 
-  <form>
+  <form [formGroup]="formGroup">
     <div>
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input name="email" matInput placeholder="your@email.com" type="email" required>
+        <input formControlName="email" name="email" matInput placeholder="your@email.com" type="email">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input name="password" matInput type="password" required>
+        <input formControlName="password" name="password" matInput type="password">
       </mat-form-field>
     </div>
     <a href="/lost-password" [routerLink]="['/lost-password']">Forgot password?</a>
-    <button mat-raised-button color="accent">Login</button>
+    <button [disabled]="!formGroup.valid" mat-raised-button color="accent">Login</button>
   </form>
 </mat-card>

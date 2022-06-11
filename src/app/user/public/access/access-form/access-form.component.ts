@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -8,7 +8,15 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class AccessFormComponent implements OnInit {
 
-   errorMessage: string | null = null;
+  errorMessage: string | null = null;
+
+  STATUS_CLEAN = 0;
+  STATUS_SENDING = 1;
+  STATUS_LOGIN_ERROR = 2;
+
+  private _loginStatus = this.STATUS_CLEAN;
+
+
 
   formGroup = new FormGroup({
     email: new FormControl('', [
@@ -20,9 +28,27 @@ export class AccessFormComponent implements OnInit {
     ])
   })
 
-  constructor() { }
+  get loginStatus(): number {
+    return this._loginStatus;
+  }
+
+  set loginStatus(value: number) {
+    this._loginStatus = value;
+  }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  loginButtonClickEventHandler(): void {
+    this.loginStatus = this.STATUS_SENDING;
+    this.loginAction(this.formGroup.controls.email.value || '', this.formGroup.controls.password.value || '');
+  }
+
+  loginAction(email: string, password: string): void {
+    
   }
 
 }

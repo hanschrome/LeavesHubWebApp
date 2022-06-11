@@ -1,7 +1,7 @@
 <mat-card>
   <h2>Login</h2>
 
-  <form [formGroup]="formGroup">
+  <form [formGroup]="formGroup" (submit)="this.loginButtonClickEventHandler()">
     <div>
       <mat-form-field>
         <mat-label>Email</mat-label>
@@ -14,6 +14,9 @@
     </div>
     <a href="/lost-password" [routerLink]="['/lost-password']">Forgot password?</a>
     <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
-    <button [disabled]="!formGroup.valid" mat-raised-button color="accent">Login</button>
+    <button [disabled]="!formGroup.valid" *ngIf="this.loginStatus !== this.STATUS_SENDING" mat-raised-button color="accent">Login</button>
+    <div class="center">
+      <mat-spinner *ngIf="loginStatus === this.STATUS_SENDING"></mat-spinner>
+    </div>
   </form>
 </mat-card>

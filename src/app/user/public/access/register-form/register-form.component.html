@@ -11,6 +11,7 @@
     <div class="center">
       <mat-spinner *ngIf="registrationStatus === this.STATUS_REGISTRATION_SENDING"></mat-spinner>
     </div>
+    <mat-error *ngIf="registerErrorMessage">{{ this.registerErrorMessage }}</mat-error>
     <button
       [disabled]="!registerEmailFormControl.valid"
       *ngIf="registrationStatus !== this.STATUS_REGISTRATION_SENDING"

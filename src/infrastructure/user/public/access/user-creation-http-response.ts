@@ -4,8 +4,8 @@ import {
 
 export class UserCreationHttpResponse implements IUserCreationHttpResponse {
 
-  private _error_code: string;
-  private _is_success: boolean;
+  private readonly _error_code: string;
+  private readonly _is_success: boolean;
 
   constructor(error_code: string, is_success: boolean) {
     this._error_code = error_code;
@@ -13,11 +13,11 @@ export class UserCreationHttpResponse implements IUserCreationHttpResponse {
   }
 
   get errorCode(): string {
-    return "";
+    return this._error_code;
   }
 
   get isSuccess(): boolean {
-    return false;
+    return this._is_success;
   }
 
 }

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserAccessService} from "../user-access.service";
+import {AccessErrorMessages} from "../access-error-messages";
 
 @Component({
   selector: 'app-access-form',
@@ -15,8 +17,6 @@ export class AccessFormComponent implements OnInit {
   STATUS_LOGIN_ERROR = 2;
 
   private _loginStatus = this.STATUS_CLEAN;
-
-
 
   formGroup = new FormGroup({
     email: new FormControl('', [
@@ -36,7 +36,7 @@ export class AccessFormComponent implements OnInit {
     this._loginStatus = value;
   }
 
-  constructor() {
+  constructor(private userAccessService: UserAccessService) {
   }
 
   ngOnInit(): void {
@@ -48,7 +48,17 @@ export class AccessFormComponent implements OnInit {
   }
 
   loginAction(email: string, password: string): void {
-    
+    this.userAccessService.loginUserByEmailAndPassword(email, password).subscribe(
+      loginHttpResponse => {
+        if (!loginHttpResponse.isSuccess) {
+          this.loginStatus = this.STATUS_LOGIN_ERROR;
+          this.errorMessage = (new AccessErrorMessages()).getErrorByKey(loginHttpResponse.error || '');
+          return;
+        }
+
+        console.log(loginHttpResponse.jwt, loginHttpResponse.expiresInSeconds); // @todo handle it
+      }
+    )
   }
 
 }

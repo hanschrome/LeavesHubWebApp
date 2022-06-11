@@ -4,6 +4,9 @@ import {Observable} from "rxjs";
 import {
   IUserCreationHttpResponse
 } from "../../../../domain/user/contracts/user-repository/responses/i-user-creation-http-response";
+import {
+  IUserLoginHttpResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-login-http-response";
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +17,9 @@ export class UserAccessService {
 
   registerUserByEmail(email: string): Observable<IUserCreationHttpResponse> {
     return this.httpUserRepository.createUserByEmail(email);
+  }
+
+  loginUserByEmailAndPassword(email: string, password: string): Observable<IUserLoginHttpResponse> {
+    return this.httpUserRepository.loginUserByEmailAndPassword(email, password);
   }
 }

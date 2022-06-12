@@ -5,6 +5,10 @@ import {LostPasswordComponent} from "./user/public/lost-password/lost-password.c
 import {ResetPasswordComponent} from "./user/public/reset-password/reset-password.component";
 import {EmailVerifiedComponent} from "./user/public/email-verified/email-verified.component";
 import {ProfileComponent} from "./user/private/profile/profile.component";
+import {ForestComponent} from "./forest/forest.component";
+import {TreeComponent} from "./forest/tree/tree.component";
+import {BranchComponent} from "./forest/tree/branch/branch.component";
+import {LeafComponent} from "./forest/tree/branch/leaf/leaf.component";
 
 const routes: Routes = [
   {path: '', component: AccessComponent},
@@ -12,6 +16,10 @@ const routes: Routes = [
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'email-verified', component: EmailVerifiedComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'forest/:forestId', component: ForestComponent},
+  {path: 'tree/:treeId', component: TreeComponent},
+  {path: 'branch/:branchId', component: BranchComponent},
+  {path: 'leaf/:leafId', component: LeafComponent},
 ];
 
 @NgModule({

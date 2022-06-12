@@ -23,9 +23,9 @@ import {LeafComponent} from './forest/tree/branch/leaf/leaf.component';
 import {MatListModule} from "@angular/material/list";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {HttpUserRepository} from "../infrastructure/user/public/access/http-user-repository";
-import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
-import { RegisterFormComponent } from './user/public/access/register-form/register-form.component';
-import { AccessFormComponent } from './user/public/access/access-form/access-form.component';
+import {HttpClientModule} from "@angular/common/http";
+import {RegisterFormComponent} from './user/public/access/register-form/register-form.component';
+import {AccessFormComponent} from './user/public/access/access-form/access-form.component';
 import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
@@ -44,22 +44,22 @@ import {MatIconModule} from "@angular/material/icon";
     RegisterFormComponent,
     AccessFormComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatCardModule,
-        MatToolbarModule,
-        MatListModule,
-        MatProgressSpinnerModule,
-        HttpClientModule,
-        MatIconModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    HttpClientModule,
+    MatIconModule,
+  ],
   providers: [
     HttpUserRepository,
   ],

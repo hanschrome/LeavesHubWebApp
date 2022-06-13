@@ -21,7 +21,7 @@ export class UserLoginHttpResponse implements IUserLoginHttpResponse {
   }
 
   get isSuccess(): boolean {
-    return false;
+    return this._is_success;
   }
 
   get expiresInSeconds(): number {

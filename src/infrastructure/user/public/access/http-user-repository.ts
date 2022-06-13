@@ -15,6 +15,14 @@ import {
   IUserEmailVerifyHttpResponse
 } from "../../../../domain/user/contracts/user-repository/responses/i-user-email-verify-http-response";
 import {UserEmailVerifyHttpResponse} from "./user-email-verify-http-response";
+import {
+  IUserRecoverPasswordRequestHttpResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-recover-password-request-http-response";
+import {
+  IUserResetPasswordHttpResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-reset-password-http-response";
+import {UserRecoverPasswordByEmailHttpResponse} from "./user-recover-password-by-email-http-response";
+import {UserResetPasswordHttpResponse} from "./user-reset-password-http-response";
 
 @Injectable()
 export class HttpUserRepository implements IUserRepository {
@@ -22,6 +30,8 @@ export class HttpUserRepository implements IUserRepository {
   private _registerUserUrl = '/v1/user-access/register';
   private _loginUserUrl = '/v1/user-access/login';
   private _verifyUserMailUrl = '/v1/user-access/verify-mail';
+  private _recoverUserPasswordByMailUrl = '/v1/user-access/recover-password';
+  private _resetUserPasswordByTokenUrl = '/v1/user-access/reset-password';
 
   constructor(private http: HttpClient) {}
 
@@ -35,6 +45,14 @@ export class HttpUserRepository implements IUserRepository {
 
   get verifyUserMailUrl(): string {
     return this._verifyUserMailUrl;
+  }
+
+  get recoverUserPasswordByMailUrl(): string {
+    return this._recoverUserPasswordByMailUrl;
+  }
+
+  get resetUserPasswordByTokenUrl(): string {
+    return this._resetUserPasswordByTokenUrl;
   }
 
   createUserByEmail(email: string): Observable<IUserCreationHttpResponse> {
@@ -62,6 +80,22 @@ export class HttpUserRepository implements IUserRepository {
     return this.http.post(environment.api + this.verifyUserMailUrl, {email: email, token: token}).pipe(
       map((rawHttpResponse: any) => {
         return new UserEmailVerifyHttpResponse(rawHttpResponse.error, rawHttpResponse.isSuccess);
+      })
+    );
+  }
+
+  recoverUserPasswordByEmail(email: string): Observable<IUserRecoverPasswordRequestHttpResponse> {
+    return this.http.post(environment.api + this.recoverUserPasswordByMailUrl, {email: email}).pipe(
+      map((rawHttpResponse: any) => {
+        return new UserRecoverPasswordByEmailHttpResponse(rawHttpResponse.error, rawHttpResponse.isSuccess);
+      })
+    );
+  }
+
+  resetUserPasswordByToken(token: string): Observable<IUserResetPasswordHttpResponse> {
+    return this.http.post(environment.api + this.resetUserPasswordByTokenUrl, {token: token}).pipe(
+      map((rawHttpResponse: any) => {
+        return new UserResetPasswordHttpResponse(rawHttpResponse.error, rawHttpResponse.isSuccess);
       })
     );
   }

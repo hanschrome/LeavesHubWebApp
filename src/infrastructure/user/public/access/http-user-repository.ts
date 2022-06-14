@@ -92,7 +92,7 @@ export class HttpUserRepository implements IUserRepository {
     );
   }
 
-  resetUserPasswordByToken(token: string): Observable<IUserResetPasswordHttpResponse> {
+  resetUserPasswordByToken(token: string, password: string): Observable<IUserResetPasswordHttpResponse> {
     return this.http.post(environment.api + this.resetUserPasswordByTokenUrl, {token: token}).pipe(
       map((rawHttpResponse: any) => {
         return new UserResetPasswordHttpResponse(rawHttpResponse.error, rawHttpResponse.isSuccess);

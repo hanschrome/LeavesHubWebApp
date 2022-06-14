@@ -14,5 +14,5 @@ export interface IUserRepository {
 
   recoverUserPasswordByEmail(email: string): Observable<IUserRecoverPasswordRequestHttpResponse>;
 
-  resetUserPasswordByToken(token: string): Observable<IUserResetPasswordHttpResponse>;
+  resetUserPasswordByToken(token: string, password: string): Observable<IUserResetPasswordHttpResponse>;
 }

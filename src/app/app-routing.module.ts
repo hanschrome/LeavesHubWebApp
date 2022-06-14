@@ -13,7 +13,7 @@ import {LeafComponent} from "./forest/tree/branch/leaf/leaf.component";
 const routes: Routes = [
   {path: '', component: AccessComponent},
   {path: 'lost-password', component: LostPasswordComponent},
-  {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'reset-password/:token', component: ResetPasswordComponent},
   {path: 'email-verified', component: EmailVerifiedComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'forest/:forestId', component: ForestComponent},

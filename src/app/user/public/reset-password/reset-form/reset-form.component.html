@@ -1,0 +1,21 @@
+<mat-card>
+  <h2>Reset your password</h2>
+
+  <form [formGroup]="resetFormControlGroup" (submit)="this.registerSubmitEventHandler()">
+    <div>
+      <mat-form-field>
+        <mat-label>Your password</mat-label>
+        <input formControlName="password" name="password" matInput minlength="6" type="password" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Repeat your password</mat-label>
+        <input formControlName="passwordConfirmation" name="password-verify" matInput type="password" [errorStateMatcher]="matcher" required>
+        <mat-error *ngIf="resetFormControlGroup.hasError(this.ERROR_MISMATCH)">
+          Passwords do not match
+        </mat-error>
+      </mat-form-field>
+      <span>* Password must have at least 6 characters long.</span>
+    </div>
+    <button [disabled]="!this.resetFormControlGroup.valid" mat-raised-button color="accent">Reset password</button>
+  </form>
+</mat-card>

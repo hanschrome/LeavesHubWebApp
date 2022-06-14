@@ -27,6 +27,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {RegisterFormComponent} from './user/public/access/register-form/register-form.component';
 import {AccessFormComponent} from './user/public/access/access-form/access-form.component';
 import {MatIconModule} from "@angular/material/icon";
+import { ResetFormComponent } from './user/public/reset-password/reset-form/reset-form.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatIconModule} from "@angular/material/icon";
     BranchComponent,
     LeafComponent,
     RegisterFormComponent,
-    AccessFormComponent
+    AccessFormComponent,
+    ResetFormComponent
   ],
   imports: [
     BrowserModule,

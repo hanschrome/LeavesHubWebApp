@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {ConfirmPasswordErrorMatcher} from "./confirm-password-error-matcher";
+import {HttpUserRepository} from "../../../../../infrastructure/user/public/access/http-user-repository";
 
 @Component({
   selector: 'app-reset-form',
@@ -11,11 +12,20 @@ export class ResetFormComponent implements OnInit {
 
   ERROR_MISMATCH = 'mismatch';
 
+  STATUS_CLEAN = 0;
+  STATUS_ERROR = 1;
+  STATUS_SUCCESS = 2;
+
+  error: string|null = null;
+  currentStatus = 0;
+
   resetFormControlGroup: FormGroup;
 
   matcher: ConfirmPasswordErrorMatcher;
 
-  constructor() {
+  constructor(
+    private httpUserRepository: HttpUserRepository
+  ) {
     this.matcher = new ConfirmPasswordErrorMatcher();
 
     this.resetFormControlGroup = new FormGroup({
@@ -31,14 +41,29 @@ export class ResetFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registerSubmitEventHandler(): void {
-
-  }
-
-  checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
+  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     let pass = group.get('password')?.value;
     let confirmPass = group.get('passwordConfirmation')?.value
 
-    return pass === confirmPass ? null : { mismatch: true };
+    return pass === confirmPass ? null : {mismatch: true};
+  }
+
+  registerSubmitEventHandler(): void {
+    this.resetPasswordAction();
+  }
+
+  resetPasswordAction(): void {
+    this.httpUserRepository.resetUserPasswordByToken(
+      '',
+      this.resetFormControlGroup.controls['password'].value).subscribe(
+      (httpResponse) => {
+        if (httpResponse.isSuccess) {
+
+          return;
+        }
+
+        this.error = httpResponse.error;
+      }
+    );
   }
 }

@@ -1,8 +1,11 @@
-<mat-card>
+<mat-card *ngIf="currentStatus !== this.STATUS_SUCCESS">
   <h2>Reset your password</h2>
 
   <form [formGroup]="resetFormControlGroup" (submit)="this.registerSubmitEventHandler()">
     <div>
+      <mat-error *ngIf="this.error">
+        {{ this.error }}
+      </mat-error>
       <mat-form-field>
         <mat-label>Your password</mat-label>
         <input formControlName="password" name="password" matInput minlength="6" type="password" required>
@@ -18,4 +21,11 @@
     </div>
     <button [disabled]="!this.resetFormControlGroup.valid" mat-raised-button color="accent">Reset password</button>
   </form>
+</mat-card>
+
+<mat-card *ngIf="currentStatus === this.STATUS_SUCCESS">
+  <h2>Password changed successfully</h2>
+  <div>
+    <p>You can <a href="/" routerLink="/">login here</a> now.</p>
+  </div>
 </mat-card>

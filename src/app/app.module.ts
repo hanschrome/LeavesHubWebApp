@@ -28,6 +28,7 @@ import {RegisterFormComponent} from './user/public/access/register-form/register
 import {AccessFormComponent} from './user/public/access/access-form/access-form.component';
 import {MatIconModule} from "@angular/material/icon";
 import { ResetFormComponent } from './user/public/reset-password/reset-form/reset-form.component';
+import { LinksFooterComponent } from './site/frame/links-footer/links-footer.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ResetFormComponent } from './user/public/reset-password/reset-form/rese
     LeafComponent,
     RegisterFormComponent,
     AccessFormComponent,
-    ResetFormComponent
+    ResetFormComponent,
+    LinksFooterComponent
   ],
   imports: [
     BrowserModule,

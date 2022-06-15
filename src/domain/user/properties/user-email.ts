@@ -1,4 +1,4 @@
-class UserEmail implements IProperty, IUserEmail{
+export class UserEmail implements IProperty, IUserEmail{
   private readonly _email: string;
 
   constructor(email: string) {

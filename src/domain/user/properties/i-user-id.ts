@@ -1,1 +1,3 @@
-interface IUserId {}
+export interface IUserId {
+  get value(): string;
+}

@@ -1,4 +1,6 @@
-class UserId implements IProperty, IUserId {
+import {IUserId} from "./i-user-id";
+
+export class UserId implements IProperty, IUserId {
   private readonly _value: string;
 
   constructor(value: string) {

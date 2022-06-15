@@ -1,8 +1,12 @@
-class User implements IUserId {
-  private readonly _id: IUserId;
-  private readonly _email: IUserEmail;
+import {IUser} from "./i-user";
+import {IUserId} from "./properties/i-user-id";
+import {IUserEmail} from "./properties/i-user-email";
 
-  constructor(id: IUserId, email: IUserEmail) {
+export class User implements IUser {
+  private readonly _id: IUserId;
+  private readonly _email: IUserEmail|null;
+
+  constructor(id: IUserId, email: IUserEmail|null) {
     this._id = id;
     this._email = email;
   }
@@ -11,7 +15,7 @@ class User implements IUserId {
     return this._id;
   }
 
-  get email(): IUserEmail {
+  get email(): IUserEmail|null {
     return this._email;
   }
 }

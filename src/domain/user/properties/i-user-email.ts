@@ -1,1 +1,1 @@
-interface IUserEmail {}
+export interface IUserEmail {}

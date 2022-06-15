@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-reset-password',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  constructor() { }
+  private _token: string
+
+  constructor(private route: ActivatedRoute) {
+    this._token = route.snapshot.paramMap.get('token') || '';
+  }
+
+  get token(): string {
+    return this._token;
+  }
 
   ngOnInit(): void {
   }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {ConfirmPasswordErrorMatcher} from "./confirm-password-error-matcher";
 import {ResetPasswordService} from "../reset-password.service";
@@ -10,6 +10,8 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./reset-form.component.scss']
 })
 export class ResetFormComponent implements OnInit {
+
+  @Input() tokenParameter = '';
 
   ERROR_MISMATCH = 'mismatch';
 
@@ -31,7 +33,7 @@ export class ResetFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.matcher = new ConfirmPasswordErrorMatcher();
-    this._token = route.snapshot.paramMap.get('token') || '';
+    this._token = this.tokenParameter;
 
     this.resetFormControlGroup = new FormGroup({
       password: new FormControl('', [
@@ -58,13 +60,11 @@ export class ResetFormComponent implements OnInit {
   }
 
   registerSubmitEventHandler(): void {
-    this.resetPasswordAction();
+    this.resetPasswordActionByTokenAndPassword(this.token, this.resetFormControlGroup.controls['password'].value);
   }
 
-  resetPasswordAction(): void {
-    this.resetPasswordService.resetUserPasswordByToken(
-      this.token,
-      this.resetFormControlGroup.controls['password'].value).subscribe(
+  resetPasswordActionByTokenAndPassword(token: string, password: string): void {
+    this.resetPasswordService.resetUserPasswordByToken(token, password).subscribe(
       (httpResponse) => {
         if (!httpResponse.isSuccess) {
           this.error = httpResponse.error;

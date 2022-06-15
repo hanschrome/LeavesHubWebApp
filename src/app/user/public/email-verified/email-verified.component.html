@@ -1,21 +1,7 @@
 <app-header-toolbar></app-header-toolbar>
 
-<mat-card>
-  <h2>Congrats! Now you can set a password for your account</h2>
+<h2>Congrats! Now you can set a password for your account</h2>
 
-  <form>
-    <div>
-      <mat-form-field>
-        <mat-label>Set password</mat-label>
-        <input name="password" matInput type="password" required>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Repeat password</mat-label>
-        <input name="password" matInput type="password" required>
-      </mat-form-field>
-    </div>
-    <button mat-raised-button color="accent">Set password</button>
-  </form>
-</mat-card>
+<app-reset-form [tokenParameter]="token"></app-reset-form>
 
 <app-links-footer></app-links-footer>

@@ -1,6 +1,4 @@
 <mat-card *ngIf="currentStatus !== this.STATUS_SUCCESS">
-  <h2>Reset your password</h2>
-
   <form [formGroup]="resetFormControlGroup" (submit)="this.registerSubmitEventHandler()">
     <div>
       <mat-error *ngIf="this.error && this.currentStatus === this.STATUS_ERROR">

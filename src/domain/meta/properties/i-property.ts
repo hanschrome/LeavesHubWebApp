@@ -1,3 +1,3 @@
-interface IProperty {
+export interface IProperty {
   validate(): void;
 }

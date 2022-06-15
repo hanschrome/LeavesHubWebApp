@@ -1,3 +1,5 @@
+import {IException} from "../../../meta/exceptions/i-exception";
+
 export class UserIdException extends Error implements IException {
   constructor(message: string) {
     super();

@@ -23,10 +23,16 @@ import {
 } from "../../../../domain/user/contracts/user-repository/responses/i-user-reset-password-http-response";
 import {UserRecoverPasswordByEmailHttpResponse} from "./user-recover-password-by-email-http-response";
 import {UserResetPasswordHttpResponse} from "./user-reset-password-http-response";
+import {IUser} from "../../../../domain/user/i-user";
+import {IUserId} from "../../../../domain/user/properties/i-user-id";
+import {User} from "../../../../domain/user/user";
+import {UserId} from "../../../../domain/user/properties/user-id";
+import {UserEmail} from "../../../../domain/user/properties/user-email";
 
 @Injectable()
 export class HttpUserRepository implements IUserRepository {
 
+  private _userUrl = '/v1/user';
   private _registerUserUrl = '/v1/user-access/register';
   private _loginUserUrl = '/v1/user-access/login';
   private _verifyUserMailUrl = '/v1/user-access/verify-mail';
@@ -34,6 +40,10 @@ export class HttpUserRepository implements IUserRepository {
   private _resetUserPasswordByTokenUrl = '/v1/user-access/reset-password';
 
   constructor(private http: HttpClient) {}
+
+  get userUrl(): string {
+    return this._userUrl;
+  }
 
   get registerUserUrl(): string {
     return this._registerUserUrl
@@ -96,6 +106,14 @@ export class HttpUserRepository implements IUserRepository {
     return this.http.post(environment.api + this.resetUserPasswordByTokenUrl, {token: token}).pipe(
       map((rawHttpResponse: any) => {
         return new UserResetPasswordHttpResponse(rawHttpResponse.error, rawHttpResponse.isSuccess);
+      })
+    );
+  }
+
+  findUserByUserId(userId: IUserId): Observable<IUser> {
+    return this.http.get(environment.api + this.userUrl + '/' + userId.value).pipe(
+      map((rawHttpResponse: any) => {
+        return new User(new UserId(rawHttpResponse.id), new UserEmail(rawHttpResponse).value);
       })
     );
   }

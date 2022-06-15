@@ -1,12 +1,16 @@
-export class UserEmail implements IProperty, IUserEmail{
-  private readonly _email: string;
+import {IUserEmail} from "./i-user-email";
+import {IProperty} from "../../meta/properties/i-property";
 
-  constructor(email: string) {
-    this._email = email;
+export class UserEmail implements IProperty, IUserEmail {
+  private readonly _value: string;
+
+  constructor(value: string) {
+    this._value = value;
+    this.validate();
   }
 
-  get email(): string {
-    return this._email;
+  get value(): string {
+    return this._value;
   }
 
   validate(): void {

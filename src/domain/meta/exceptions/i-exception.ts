@@ -1,1 +1,1 @@
-interface IException {}
+export interface IException {}

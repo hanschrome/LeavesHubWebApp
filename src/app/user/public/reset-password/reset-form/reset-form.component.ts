@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {ConfirmPasswordErrorMatcher} from "./confirm-password-error-matcher";
-import {HttpUserRepository} from "../../../../../infrastructure/user/public/access/http-user-repository";
+import {ResetPasswordService} from "../reset-password.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-reset-form',
@@ -16,17 +17,21 @@ export class ResetFormComponent implements OnInit {
   STATUS_ERROR = 1;
   STATUS_SUCCESS = 2;
 
-  error: string|null = null;
+  error: string | null = null;
   currentStatus = 0;
 
   resetFormControlGroup: FormGroup;
 
   matcher: ConfirmPasswordErrorMatcher;
 
+  private _token: string;
+
   constructor(
-    private httpUserRepository: HttpUserRepository
+    private resetPasswordService: ResetPasswordService,
+    private route: ActivatedRoute
   ) {
     this.matcher = new ConfirmPasswordErrorMatcher();
+    this._token = route.snapshot.paramMap.get('token') || '';
 
     this.resetFormControlGroup = new FormGroup({
       password: new FormControl('', [
@@ -41,6 +46,10 @@ export class ResetFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get token(): string {
+    return this._token;
+  }
+
   checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     let pass = group.get('password')?.value;
     let confirmPass = group.get('passwordConfirmation')?.value
@@ -53,16 +62,16 @@ export class ResetFormComponent implements OnInit {
   }
 
   resetPasswordAction(): void {
-    this.httpUserRepository.resetUserPasswordByToken(
-      '',
+    this.resetPasswordService.resetUserPasswordByToken(
+      this.token,
       this.resetFormControlGroup.controls['password'].value).subscribe(
       (httpResponse) => {
-        if (httpResponse.isSuccess) {
-
-          return;
+        if (!httpResponse.isSuccess) {
+          this.error = httpResponse.error;
+          this.currentStatus = this.STATUS_ERROR;
         }
 
-        this.error = httpResponse.error;
+        this.currentStatus = this.STATUS_SUCCESS;
       }
     );
   }

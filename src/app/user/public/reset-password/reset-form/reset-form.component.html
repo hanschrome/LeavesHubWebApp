@@ -3,7 +3,7 @@
 
   <form [formGroup]="resetFormControlGroup" (submit)="this.registerSubmitEventHandler()">
     <div>
-      <mat-error *ngIf="this.error">
+      <mat-error *ngIf="this.error && this.currentStatus === this.STATUS_ERROR">
         {{ this.error }}
       </mat-error>
       <mat-form-field>

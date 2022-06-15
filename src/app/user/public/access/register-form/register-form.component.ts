@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {AccessErrorMessages} from "../access-error-messages";
 import {UserAccessService} from "../user-access.service";
-import {environment} from "../../../../../environments/environment";
 
 
 @Component({

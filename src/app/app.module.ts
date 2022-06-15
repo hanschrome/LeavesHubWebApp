@@ -29,6 +29,7 @@ import {AccessFormComponent} from './user/public/access/access-form/access-form.
 import {MatIconModule} from "@angular/material/icon";
 import { ResetFormComponent } from './user/public/reset-password/reset-form/reset-form.component';
 import { LinksFooterComponent } from './site/frame/links-footer/links-footer.component';
+import { HeaderToolbarComponent } from './site/frame/header-toolbar/header-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { LinksFooterComponent } from './site/frame/links-footer/links-footer.com
     RegisterFormComponent,
     AccessFormComponent,
     ResetFormComponent,
-    LinksFooterComponent
+    LinksFooterComponent,
+    HeaderToolbarComponent
   ],
   imports: [
     BrowserModule,

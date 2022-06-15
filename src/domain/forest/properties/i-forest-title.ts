@@ -1,1 +1,3 @@
-interface IForestTitle {}
+interface IForestTitle {
+  get value(): string;
+}

@@ -1,1 +1,3 @@
-interface IForestId {}
+interface IForestId {
+  get value(): string;
+}

@@ -1,1 +1,3 @@
-interface IForestSummary {}
+interface IForestSummary {
+  get value(): string;
+}

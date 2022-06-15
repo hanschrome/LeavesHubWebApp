@@ -12,6 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ResetFormComponent implements OnInit {
 
   @Input() tokenParameter = '';
+  @Input() subtitle = ''
 
   ERROR_MISMATCH = 'mismatch';
 

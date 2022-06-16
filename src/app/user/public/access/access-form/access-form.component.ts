@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserAccessService} from "../user-access.service";
 import {AccessErrorMessages} from "../access-error-messages";
+import {UserEmail} from "../../../../../domain/user/properties/user-email";
+import {UserPassword} from "../../../../../domain/user/properties/user-password";
 
 @Component({
   selector: 'app-access-form',
@@ -48,7 +50,7 @@ export class AccessFormComponent implements OnInit {
   }
 
   loginAction(email: string, password: string): void {
-    this.userAccessService.loginUserByEmailAndPassword(email, password).subscribe(
+    this.userAccessService.loginUserByEmailAndPassword(new UserEmail(email), new UserPassword(password)).subscribe(
       loginHttpResponse => {
         if (!loginHttpResponse.isSuccess) {
           this.loginStatus = this.STATUS_LOGIN_ERROR;

@@ -1,6 +1,6 @@
 import {
   IUserRecoverPasswordRequestResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-recover-password-request-response";
+} from "../../../../../domain/user/contracts/user-repository/responses/i-user-recover-password-request-response";
 
 export class UserRecoverPasswordByEmailHttpResponse implements IUserRecoverPasswordRequestResponse {
 

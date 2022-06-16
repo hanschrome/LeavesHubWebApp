@@ -1,6 +1,6 @@
 import {
   IUserLoginResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-login-response";
+} from "../../../../../domain/user/contracts/user-repository/responses/i-user-login-response";
 
 export class UserLoginHttpResponse implements IUserLoginResponse {
 

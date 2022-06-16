@@ -1,6 +1,6 @@
 import {
   IUserCreationResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-creation-response";
+} from "../../../../../domain/user/contracts/user-repository/responses/i-user-creation-response";
 
 export class UserCreationHttpResponse implements IUserCreationResponse {
 

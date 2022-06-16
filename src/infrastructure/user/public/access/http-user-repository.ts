@@ -4,25 +4,25 @@ import {map, Observable} from "rxjs";
 import {
   IUserCreationResponse
 } from "../../../../domain/user/contracts/user-repository/responses/i-user-creation-response";
-import {UserCreationHttpResponse} from "./user-creation-http-response";
+import {UserCreationHttpResponse} from "./reponses/user-creation-http-response";
 import {environment} from "../../../../environments/environment";
 import {Injectable} from "@angular/core";
 import {
   IUserLoginResponse
 } from "../../../../domain/user/contracts/user-repository/responses/i-user-login-response";
-import {UserLoginHttpResponse} from "./user-login-http-response";
+import {UserLoginHttpResponse} from "./reponses/user-login-http-response";
 import {
   IUserEmailVerifyResponse
 } from "../../../../domain/user/contracts/user-repository/responses/i-user-email-verify-response";
-import {UserEmailVerifyHttpResponse} from "./user-email-verify-http-response";
+import {UserEmailVerifyHttpResponse} from "./reponses/user-email-verify-http-response";
 import {
   IUserRecoverPasswordRequestResponse
 } from "../../../../domain/user/contracts/user-repository/responses/i-user-recover-password-request-response";
 import {
   IUserResetPasswordResponse
 } from "../../../../domain/user/contracts/user-repository/responses/i-user-reset-password-response";
-import {UserRecoverPasswordByEmailHttpResponse} from "./user-recover-password-by-email-http-response";
-import {UserResetPasswordHttpResponse} from "./user-reset-password-http-response";
+import {UserRecoverPasswordByEmailHttpResponse} from "./reponses/user-recover-password-by-email-http-response";
+import {UserResetPasswordHttpResponse} from "./reponses/user-reset-password-http-response";
 import {IUser} from "../../../../domain/user/i-user";
 import {IUserId} from "../../../../domain/user/properties/i-user-id";
 import {User} from "../../../../domain/user/user";

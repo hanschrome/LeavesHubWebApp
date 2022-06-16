@@ -1,6 +1,6 @@
 import {
   IUserEmailVerifyResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-email-verify-response";
+} from "../../../../../domain/user/contracts/user-repository/responses/i-user-email-verify-response";
 
 export class UserEmailVerifyHttpResponse implements IUserEmailVerifyResponse {
 

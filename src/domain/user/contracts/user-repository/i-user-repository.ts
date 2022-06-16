@@ -8,6 +8,7 @@ import {IUserId} from "../../properties/i-user-id";
 import {IUser} from "../../i-user";
 import {IUserEmail} from "../../properties/i-user-email";
 import {IUserPassword} from "../../properties/i-user-password";
+import {IUserToken} from "../../properties/i-user-token";
 
 export interface IUserRepository {
   findUserByUserId(userId: IUserId): Observable<IUser>;
@@ -16,9 +17,9 @@ export interface IUserRepository {
 
   loginUserByEmailAndPassword(email: IUserEmail, password: IUserPassword): Observable<IUserLoginResponse>;
 
-  verifyUserByEmail(email: IUserEmail, token: string): Observable<IUserEmailVerifyResponse>;
+  verifyUserByEmail(email: IUserEmail, token: IUserToken): Observable<IUserEmailVerifyResponse>;
 
   recoverUserPasswordByEmail(email: IUserEmail): Observable<IUserRecoverPasswordRequestResponse>;
 
-  resetUserPasswordByToken(token: string, password: IUserPassword): Observable<IUserResetPasswordResponse>;
+  resetUserPasswordByToken(token: IUserToken, password: IUserPassword): Observable<IUserResetPasswordResponse>;
 }

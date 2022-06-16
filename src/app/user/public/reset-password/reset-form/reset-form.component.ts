@@ -4,6 +4,7 @@ import {ConfirmPasswordErrorMatcher} from "./confirm-password-error-matcher";
 import {ResetPasswordService} from "../reset-password.service";
 import {ActivatedRoute} from "@angular/router";
 import {UserPassword} from "../../../../../domain/user/properties/user-password";
+import {UserToken} from "../../../../../domain/user/properties/user-token";
 
 @Component({
   selector: 'app-reset-form',
@@ -66,7 +67,7 @@ export class ResetFormComponent implements OnInit {
   }
 
   resetPasswordActionByTokenAndPassword(token: string, password: string): void {
-    this.resetPasswordService.resetUserPasswordByToken(token, new UserPassword(password)).subscribe(
+    this.resetPasswordService.resetUserPasswordByToken(new UserToken(token), new UserPassword(password)).subscribe(
       (httpResponse) => {
         if (!httpResponse.isSuccess) {
           this.error = httpResponse.error;

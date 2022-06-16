@@ -1,1 +1,3 @@
-export interface IUserEmail {}
+export interface IUserEmail {
+  get value(): string;
+}

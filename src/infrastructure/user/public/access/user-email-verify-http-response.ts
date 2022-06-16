@@ -1,8 +1,8 @@
 import {
-  IUserEmailVerifyHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-email-verify-http-response";
+  IUserEmailVerifyResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-email-verify-response";
 
-export class UserEmailVerifyHttpResponse implements IUserEmailVerifyHttpResponse {
+export class UserEmailVerifyHttpResponse implements IUserEmailVerifyResponse {
 
   private readonly _error: string | null;
   private readonly _isSuccess: boolean;

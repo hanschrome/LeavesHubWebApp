@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {AccessErrorMessages} from "../access-error-messages";
 import {UserAccessService} from "../user-access.service";
+import {UserEmail} from "../../../../../domain/user/properties/user-email";
 
 
 @Component({
@@ -46,7 +47,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   registerEmailAction(registerEmailField: string): void {
-    this.userAccess.registerUserByEmail(registerEmailField).subscribe(
+    this.userAccess.registerUserByEmail(new UserEmail(registerEmailField)).subscribe(
       userResponse => {
         let registrationStatus = this.STATUS_REGISTRATION_SUCCESS;
 

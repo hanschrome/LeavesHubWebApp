@@ -1,8 +1,8 @@
 import {
-  IUserResetPasswordHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-reset-password-http-response";
+  IUserResetPasswordResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-reset-password-response";
 
-export class UserResetPasswordHttpResponse implements IUserResetPasswordHttpResponse {
+export class UserResetPasswordHttpResponse implements IUserResetPasswordResponse {
   private readonly _error: string|null;
   private readonly _is_success: boolean;
 

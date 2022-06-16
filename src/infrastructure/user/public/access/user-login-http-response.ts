@@ -1,8 +1,8 @@
 import {
-  IUserLoginHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-login-http-response";
+  IUserLoginResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-login-response";
 
-export class UserLoginHttpResponse implements IUserLoginHttpResponse {
+export class UserLoginHttpResponse implements IUserLoginResponse {
 
   private readonly _error: string|null;
   private readonly _is_success: boolean;

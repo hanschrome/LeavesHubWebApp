@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {LostPasswordService} from "./lost-password.service";
+import {UserEmail} from "../../../../domain/user/properties/user-email";
 
 @Component({
   selector: 'app-lost-password',
@@ -31,7 +32,7 @@ export class LostPasswordComponent implements OnInit {
   recoverUserPasswordByEmail(email: string): void {
     this.status = this.STATUS_CLEAN;
 
-    this.lostPasswordService.recoverUserPasswordByEmail(email).subscribe(
+    this.lostPasswordService.recoverUserPasswordByEmail(new UserEmail(email)).subscribe(
       (response) => {
         if (!response.isSuccess) {
           this.error = response.error || '';

@@ -1,8 +1,8 @@
 import {
-  IUserCreationHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-creation-http-response";
+  IUserCreationResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-creation-response";
 
-export class UserCreationHttpResponse implements IUserCreationHttpResponse {
+export class UserCreationHttpResponse implements IUserCreationResponse {
 
   private readonly _error_code: string;
   private readonly _is_success: boolean;

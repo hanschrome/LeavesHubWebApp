@@ -2,25 +2,25 @@ import {IUserRepository} from '../../../../domain/user/contracts/user-repository
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {
-  IUserCreationHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-creation-http-response";
+  IUserCreationResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-creation-response";
 import {UserCreationHttpResponse} from "./user-creation-http-response";
 import {environment} from "../../../../environments/environment";
 import {Injectable} from "@angular/core";
 import {
-  IUserLoginHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-login-http-response";
+  IUserLoginResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-login-response";
 import {UserLoginHttpResponse} from "./user-login-http-response";
 import {
-  IUserEmailVerifyHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-email-verify-http-response";
+  IUserEmailVerifyResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-email-verify-response";
 import {UserEmailVerifyHttpResponse} from "./user-email-verify-http-response";
 import {
-  IUserRecoverPasswordRequestHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-recover-password-request-http-response";
+  IUserRecoverPasswordRequestResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-recover-password-request-response";
 import {
-  IUserResetPasswordHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-reset-password-http-response";
+  IUserResetPasswordResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-reset-password-response";
 import {UserRecoverPasswordByEmailHttpResponse} from "./user-recover-password-by-email-http-response";
 import {UserResetPasswordHttpResponse} from "./user-reset-password-http-response";
 import {IUser} from "../../../../domain/user/i-user";
@@ -28,6 +28,8 @@ import {IUserId} from "../../../../domain/user/properties/i-user-id";
 import {User} from "../../../../domain/user/user";
 import {UserId} from "../../../../domain/user/properties/user-id";
 import {UserEmail} from "../../../../domain/user/properties/user-email";
+import {IUserEmail} from "../../../../domain/user/properties/i-user-email";
+import {IUserPassword} from "../../../../domain/user/properties/i-user-password";
 
 @Injectable()
 export class HttpUserRepository implements IUserRepository {
@@ -65,16 +67,16 @@ export class HttpUserRepository implements IUserRepository {
     return this._resetUserPasswordByTokenUrl;
   }
 
-  createUserByEmail(email: string): Observable<IUserCreationHttpResponse> {
-     return this.http.post(environment.api + this.registerUserUrl, {email: email}).pipe(
+  createUserByEmail(email: IUserEmail): Observable<IUserCreationResponse> {
+     return this.http.post(environment.api + this.registerUserUrl, {email: email.value}).pipe(
       map((rawHttpResponse: any) => {
         return new UserCreationHttpResponse(rawHttpResponse.error, rawHttpResponse.isSuccess);
       })
     );
   }
 
-  loginUserByEmailAndPassword(email: string, password: string): Observable<IUserLoginHttpResponse> {
-    return this.http.post(environment.api + this.loginUserUrl, {email: email, password: password}).pipe(
+  loginUserByEmailAndPassword(email: IUserEmail, password: IUserPassword): Observable<IUserLoginResponse> {
+    return this.http.post(environment.api + this.loginUserUrl, {email: email.value, password: password.value}).pipe(
       map((rawHttpResponse: any) => {
         return new UserLoginHttpResponse(
           rawHttpResponse.error,
@@ -86,24 +88,24 @@ export class HttpUserRepository implements IUserRepository {
     );
   }
 
-  verifyUserByEmail(email: string, token: string): Observable<IUserEmailVerifyHttpResponse> {
-    return this.http.post(environment.api + this.verifyUserMailUrl, {email: email, token: token}).pipe(
+  verifyUserByEmail(email: IUserEmail, token: string): Observable<IUserEmailVerifyResponse> {
+    return this.http.post(environment.api + this.verifyUserMailUrl, {email: email.value, token: token}).pipe(
       map((rawHttpResponse: any) => {
         return new UserEmailVerifyHttpResponse(rawHttpResponse.error, rawHttpResponse.isSuccess);
       })
     );
   }
 
-  recoverUserPasswordByEmail(email: string): Observable<IUserRecoverPasswordRequestHttpResponse> {
-    return this.http.post(environment.api + this.recoverUserPasswordByMailUrl, {email: email}).pipe(
+  recoverUserPasswordByEmail(email: IUserEmail): Observable<IUserRecoverPasswordRequestResponse> {
+    return this.http.post(environment.api + this.recoverUserPasswordByMailUrl, {email: email.value}).pipe(
       map((rawHttpResponse: any) => {
         return new UserRecoverPasswordByEmailHttpResponse(rawHttpResponse.error, rawHttpResponse.isSuccess);
       })
     );
   }
 
-  resetUserPasswordByToken(token: string, password: string): Observable<IUserResetPasswordHttpResponse> {
-    return this.http.post(environment.api + this.resetUserPasswordByTokenUrl, {token: token}).pipe(
+  resetUserPasswordByToken(token: string, password: IUserPassword): Observable<IUserResetPasswordResponse> {
+    return this.http.post(environment.api + this.resetUserPasswordByTokenUrl, {token: token, password: password.value}).pipe(
       map((rawHttpResponse: any) => {
         return new UserResetPasswordHttpResponse(rawHttpResponse.error, rawHttpResponse.isSuccess);
       })
@@ -113,7 +115,7 @@ export class HttpUserRepository implements IUserRepository {
   findUserByUserId(userId: IUserId): Observable<IUser> {
     return this.http.get(environment.api + this.userUrl + '/' + userId.value).pipe(
       map((rawHttpResponse: any) => {
-        return new User(new UserId(rawHttpResponse.id), new UserEmail(rawHttpResponse).value);
+        return new User(new UserId(rawHttpResponse.id), new UserEmail(rawHttpResponse));
       })
     );
   }

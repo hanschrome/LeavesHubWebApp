@@ -1,22 +1,24 @@
 import {Observable} from "rxjs";
-import {IUserCreationHttpResponse} from "./responses/i-user-creation-http-response";
-import {IUserLoginHttpResponse} from "./responses/i-user-login-http-response";
-import {IUserEmailVerifyHttpResponse} from "./responses/i-user-email-verify-http-response";
-import {IUserRecoverPasswordRequestHttpResponse} from "./responses/i-user-recover-password-request-http-response";
-import {IUserResetPasswordHttpResponse} from "./responses/i-user-reset-password-http-response";
+import {IUserCreationResponse} from "./responses/i-user-creation-response";
+import {IUserLoginResponse} from "./responses/i-user-login-response";
+import {IUserEmailVerifyResponse} from "./responses/i-user-email-verify-response";
+import {IUserRecoverPasswordRequestResponse} from "./responses/i-user-recover-password-request-response";
+import {IUserResetPasswordResponse} from "./responses/i-user-reset-password-response";
 import {IUserId} from "../../properties/i-user-id";
 import {IUser} from "../../i-user";
+import {IUserEmail} from "../../properties/i-user-email";
+import {IUserPassword} from "../../properties/i-user-password";
 
 export interface IUserRepository {
   findUserByUserId(userId: IUserId): Observable<IUser>;
 
-  createUserByEmail(email: string): Observable<IUserCreationHttpResponse>;
+  createUserByEmail(email: IUserEmail): Observable<IUserCreationResponse>;
 
-  loginUserByEmailAndPassword(email: string, password: string): Observable<IUserLoginHttpResponse>;
+  loginUserByEmailAndPassword(email: IUserEmail, password: IUserPassword): Observable<IUserLoginResponse>;
 
-  verifyUserByEmail(email: string, token: string): Observable<IUserEmailVerifyHttpResponse>;
+  verifyUserByEmail(email: IUserEmail, token: string): Observable<IUserEmailVerifyResponse>;
 
-  recoverUserPasswordByEmail(email: string): Observable<IUserRecoverPasswordRequestHttpResponse>;
+  recoverUserPasswordByEmail(email: IUserEmail): Observable<IUserRecoverPasswordRequestResponse>;
 
-  resetUserPasswordByToken(token: string, password: string): Observable<IUserResetPasswordHttpResponse>;
+  resetUserPasswordByToken(token: string, password: IUserPassword): Observable<IUserResetPasswordResponse>;
 }

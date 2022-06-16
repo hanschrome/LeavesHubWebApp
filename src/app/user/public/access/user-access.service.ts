@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import {HttpUserRepository} from "../../../../infrastructure/user/public/access/http-user-repository";
 import {Observable} from "rxjs";
 import {
-  IUserCreationHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-creation-http-response";
+  IUserCreationResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-creation-response";
 import {
-  IUserLoginHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-login-http-response";
+  IUserLoginResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-login-response";
+import {IUserEmail} from "../../../../domain/user/properties/i-user-email";
+import {IUserPassword} from "../../../../domain/user/properties/i-user-password";
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +17,11 @@ export class UserAccessService {
 
   constructor(private httpUserRepository: HttpUserRepository) { }
 
-  registerUserByEmail(email: string): Observable<IUserCreationHttpResponse> {
+  registerUserByEmail(email: IUserEmail): Observable<IUserCreationResponse> {
     return this.httpUserRepository.createUserByEmail(email);
   }
 
-  loginUserByEmailAndPassword(email: string, password: string): Observable<IUserLoginHttpResponse> {
+  loginUserByEmailAndPassword(email: IUserEmail, password: IUserPassword): Observable<IUserLoginResponse> {
     return this.httpUserRepository.loginUserByEmailAndPassword(email, password);
   }
 }

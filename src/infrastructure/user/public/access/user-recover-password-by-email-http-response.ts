@@ -1,8 +1,8 @@
 import {
-  IUserRecoverPasswordRequestHttpResponse
-} from "../../../../domain/user/contracts/user-repository/responses/i-user-recover-password-request-http-response";
+  IUserRecoverPasswordRequestResponse
+} from "../../../../domain/user/contracts/user-repository/responses/i-user-recover-password-request-response";
 
-export class UserRecoverPasswordByEmailHttpResponse implements IUserRecoverPasswordRequestHttpResponse {
+export class UserRecoverPasswordByEmailHttpResponse implements IUserRecoverPasswordRequestResponse {
 
   private readonly _error: string|null;
   private readonly _is_success: boolean;

@@ -1,4 +1,6 @@
-class Forest implements IForest {
+import {IForest} from "./i-forest";
+
+export class Forest implements IForest {
   private readonly _id: IForestId;
   private readonly _title: IForestTitle;
   private readonly _summary: IForestTitle;

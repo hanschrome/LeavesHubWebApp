@@ -1,1 +1,1 @@
-interface IForest {}
+export interface IForest {}

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class RestForestRepositoryService implements IForestRepositoryContract {
+export class RestForestRepositoryService { // implements IForestRepositoryContract
 
-  constructor() { }
 }

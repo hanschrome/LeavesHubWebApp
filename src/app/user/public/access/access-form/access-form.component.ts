@@ -58,7 +58,8 @@ export class AccessFormComponent implements OnInit {
           return;
         }
 
-        console.log(loginHttpResponse.jwt, loginHttpResponse.expiresInSeconds); // @todo handle it
+        const timestamp = new Date().getTime();
+        this.userAccessService.saveSession(loginHttpResponse.jwt, timestamp, timestamp + loginHttpResponse.expiresInSeconds);
       }
     )
   }

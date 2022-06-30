@@ -1,3 +1,3 @@
-interface IForestCreationDate {
+export interface IForestCreationDate {
   get value(): number;
 }

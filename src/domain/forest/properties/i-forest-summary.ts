@@ -1,3 +1,3 @@
-interface IForestSummary {
+export interface IForestSummary {
   get value(): string;
 }

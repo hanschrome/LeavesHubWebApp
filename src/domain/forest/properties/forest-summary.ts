@@ -1,3 +1,5 @@
+import {IForestSummary} from "./i-forest-summary";
+
 export class ForestSummary implements IForestSummary {
 
   private readonly _value: string;

@@ -1,3 +1,3 @@
-interface IForestTitle {
+export interface IForestTitle {
   get value(): string;
 }

@@ -1,1 +1,7 @@
 <p>forest-list works!</p>
+
+<ul *ngIf="forestList">
+  <li *ngFor="let forest of this.forestList.forestList">
+    {{ forest.title }}
+  </li>
+</ul>

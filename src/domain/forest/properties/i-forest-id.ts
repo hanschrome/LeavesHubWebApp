@@ -1,3 +1,3 @@
-interface IForestId {
+export interface IForestId {
   get value(): string;
 }

@@ -1,4 +1,6 @@
-export class ForestId implements IForestId{
+import {IForestId} from "./i-forest-id";
+
+export class ForestId implements IForestId {
 
   private readonly _value: string;
 

@@ -1,4 +1,6 @@
-export class ForestTitle implements IForestTitle{
+import {IForestTitle} from "./i-forest-title";
+
+export class ForestTitle implements IForestTitle {
 
   private readonly _value: string;
 

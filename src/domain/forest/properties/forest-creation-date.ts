@@ -1,3 +1,5 @@
+import {IForestCreationDate} from "./i-forest-creation-date";
+
 export class ForestCreationDate implements IForestCreationDate {
 
   private readonly _value: number;

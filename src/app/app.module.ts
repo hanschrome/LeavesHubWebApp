@@ -30,6 +30,7 @@ import {MatIconModule} from "@angular/material/icon";
 import { ResetFormComponent } from './user/public/reset-password/reset-form/reset-form.component';
 import { LinksFooterComponent } from './site/frame/links-footer/links-footer.component';
 import { HeaderToolbarComponent } from './site/frame/header-toolbar/header-toolbar.component';
+import {LocalStorageSessionRepository} from "../infrastructure/user/private/local-storage-session-repository";
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { HeaderToolbarComponent } from './site/frame/header-toolbar/header-toolb
   ],
   providers: [
     HttpUserRepository,
+    LocalStorageSessionRepository,
   ],
   bootstrap: [AppComponent]
 })
